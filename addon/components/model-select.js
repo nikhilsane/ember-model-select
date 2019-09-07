@@ -296,6 +296,11 @@ export default Component.extend({
 
     let _options;
 
+    console.log("1>  " + this.get('perPageParam'));
+    console.log("2>  " + this.get('pageSize'));
+    console.log("3>  " + this.get('pageParam'));
+    console.log("4>  " + this.get('totalPagesParam'));
+    
     if(this.get('infiniteScroll')){
       // ember-infinity configuration
       query.perPage         = this.get('pageSize');
@@ -304,7 +309,7 @@ export default Component.extend({
       query.pageParam       = this.get('pageParam');
       query.totalPagesParam = this.get('totalPagesParam');
       query.limit           = this.get('pageSize');
-      query.offset          = (this.get('pageParam') - 1) * this.get('pageSize');
+      // query.offset          = (this.get('pageParam') - 1) * this.get('pageSize');
 
       this.set('model', this.get('infinity').model(this.get('modelName'), query));
 
@@ -313,7 +318,7 @@ export default Component.extend({
       set(query, this.get('pageParam'), 1);
       set(query, this.get('perPageParam'), this.get('pageSize'));
       set(query, 'limit', this.get('pageSize'));
-      set(query, 'offset', (this.get('pageParam')-1) * this.get('pageSize'));
+      // set(query, 'offset', (this.get('pageParam')-1) * this.get('pageSize'));
 
       _options = yield this.get('store').query(this.get('modelName'), query);
     }
