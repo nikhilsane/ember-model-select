@@ -303,6 +303,8 @@ export default Component.extend({
       query.perPageParam    = this.get('perPageParam');
       query.pageParam       = this.get('pageParam');
       query.totalPagesParam = this.get('totalPagesParam');
+      query.limit           = this.get('pageSize');
+      query.offset          = (this.get('pageParam') - 1) * this.get('pageSize');
 
       this.set('model', this.get('infinity').model(this.get('modelName'), query));
 
@@ -310,6 +312,8 @@ export default Component.extend({
     } else {
       set(query, this.get('pageParam'), 1);
       set(query, this.get('perPageParam'), this.get('pageSize'));
+      set(query, 'limit', this.get('pageSize'));
+      set(query, 'offset', (this.get('pageParam')-1) * this.get('pageSize'));
 
       _options = yield this.get('store').query(this.get('modelName'), query);
     }
