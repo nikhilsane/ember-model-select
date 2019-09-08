@@ -308,7 +308,7 @@ export default Component.extend({
       query.perPageParam    = this.get('perPageParam');
       query.pageParam       = this.get('pageParam');
       query.totalPagesParam = this.get('totalPagesParam');
-      query.countParam      = 'meta.totalCount';
+      //query.countParam      = 'meta.totalCount';
       query.limit           = this.get('pageSize');
       // query.offset          = (this.get('pageParam') - 1) * this.get('pageSize');
       console.log(">>>5>>>");
