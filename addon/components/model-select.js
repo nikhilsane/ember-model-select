@@ -352,6 +352,7 @@ export default Component.extend({
       this.get('oninput', ...arguments);
     },
     onClose(){
+      console.log("onClose invoked..");
       this.get('searchModels').cancelAll();
 
       this.get('onclose')(...arguments);
